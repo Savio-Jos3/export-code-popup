@@ -1,35 +1,67 @@
 /* src/styles/TabNavigation.css */
 
+/* src/styles/TabNavigation.css - FINAL SEGMENT PICKER COLOR LOGIC */
+
+/* --- 1. Tab Navigation Container (The Outer Frame) --- */
+/* src/styles/TabNavigation.css - FORCED FINAL STATE FIX */
+
 .tab-navigation {
   display: flex;
-  padding: 4px; 
-  background-color: var(--tab-bar-bg); /* #404040 (dark) */
-  border-radius: var(--border-radius-sm); 
-  margin: 0 24px 24px 24px; 
+  
+  /* Dimensions/Spacing (RETAINED) */
+  width: 412px;
+  height: 42px;
+  padding: 2px;
+  
+  /* Background remains the subtle transparent dark */
+  background-color: rgba(255, 255, 255, 0.08); /* #FFFFFF14 */
+  border-radius: 8.91px;
+  margin: 0; 
 }
 
+/* --- 2. Individual Tab Button (Pill - Both States) --- */
 .tab-button {
   flex: 1; 
-  padding: 10px 0;
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-inactive-tab-color); /* Light grey text */
-  border: 1px solid var(--border-subtle); /* Dark border */
-  background-color: transparent; /* <--- CHANGE: Inactive tabs are now transparent within the dark tab bar */
-  border-radius: var(--border-radius-sm);
+  /* Dimensions (RETAINED) */
+  width: 204px;
+  height: 38px;
+  padding: 10px 16px; 
+  gap: 10px; 
+  
+  /* --- CRITICAL: Default (Inactive) Background is TRANSPARENT ---
+     This allows the parent's #FFFFFF14 color to show through (the unselected state). */
+  background-color: transparent; 
+  border: none; 
+  border-radius: 48px; 
+  
+  display: flex; 
+  justify-content: center;
+  align-items: center;
   transition: all 0.2s ease-in-out; 
+
+  /* --- TEXT STYLING APPLIED DIRECTLY TO BUTTON (RETAINED) --- */
+  font-family: var(--font-family-header); /* Kumbh Sans */
+  font-size: var(--font-size-md); 
+  font-weight: 500; 
+  line-height: 20px; 
+  letter-spacing: -0.08px;
+  text-align: center;
+  
+  /* --- CRITICAL: Text Color is ALWAYS WHITE (#FFFFFF) --- */
+  color: #FFFFFF; 
 }
 
-/* Active Tab Styles */
+/* --- 3. Active Tab Styles (Selected Pill) --- */
 .tab-button.active {
-  background-color: var(--export-button-bg-top); /* Dark background for active tab #444444 */
-  color: var(--text-primary); /* White text */
-  border: 1px solid var(--export-button-border); /* Subtle white border for active tab */
+  /* --- CRITICAL: Selected Tab Background is now BLACK (#000000) --- */
+  background-color: #000000; 
+  border: none; 
   box-shadow: none; 
+  border-radius: 48px; 
 }
 
-/* Hover State for Inactive Tabs */
+/* --- 4. Hover State for Inactive Tabs --- */
 .tab-button:not(.active):hover {
-  background-color: rgba(255, 255, 255, 0.1); /* <--- CHANGE: Light hover effect on the dark tab bar */
-  color: var(--text-primary); /* White text on hover */
+  /* Subtle dark color on hover over the #FFFFFF14 background */
+  background-color: rgba(0, 0, 0, 0.15); 
 }

@@ -1,0 +1,35 @@
+/* src/styles/Frame2Wrapper.css - FRAME 2 STYLES FINALIZED */
+
+.frame-2-wrapper {
+  /* Dimensions/Layout */
+  width: 428px;
+  height: 218px; /* <--- ENSURING CORRECT HEIGHT */
+  
+  /* Appearance */
+  background: var(--frame-2-bg); /* #00000066 */
+  border-radius: 12px; /* <--- ENSURING CORRECT BORDER RADIUS */
+  
+  /* Layout and Spacing */
+  display: flex;
+  flex-direction: column;
+  /* Inner Padding: 8px top/right/left, 16px bottom */
+  padding: 8px 8px 16px 8px; 
+  gap: 24px; 
+}
+
+/* --- CORRECTION FOR TAB CONTENT BACKGROUND --- */
+/* The tab content (inner black frame) should follow the Segment Picker color only if 
+   it's meant to be the *same* as the outer Frame 2, which is #00000066.
+   However, the request says "same as the segment picker" (#FFFFFF14). 
+   This means the content wrapper (TabContent) should NOT use the darker black (#1A1A1A) 
+   we introduced previously. */
+
+/* Let's adjust TabContent.css or TabContent.jsx to ensure the main .tab-content area uses the correct background.
+   Since the Tab Content has its own inner wrapper (tab-content-container) we will remove the old
+   inner black frame color and let the Frame 2 color bleed through, or explicitly set it 
+   to the Segment Picker BG if it truly spans the entire inner frame. 
+   
+   Based on the visual, only the area around the tabs uses the Frame 2 BG. The content area is often transparent 
+   or slightly different. Given the ambiguity, we'll assume the *whole* TabContent area inside Frame 2
+   should use the `frame-2-bg` color, and the inner frame is the anomaly. We will revert the inner black frame 
+   (tab-content-container) to transparent to see the main frame-2-bg. */

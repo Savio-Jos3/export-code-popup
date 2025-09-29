@@ -15,14 +15,23 @@
   --app-bg: #FFFFFF; /* Main application background (STILL WHITE) */
   --overlay-bg: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
                 linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Overlay is complex gradient */
-  
+  --frame-2-bg: rgba(0, 0, 0, 0.4);      /* #00000066 (Black 40) */
+  /* This is the background of the Segment Picker container */
+  --segment-picker-bg: rgba(255, 255, 255, 0.08); /* #FFFFFF14 (White 14) */
+  --tab-content-inner-bg: #1A1A1A; /* Darker black for the inner content frame */
+
+                --frame-2-bg: rgba(0, 0, 0, 0.4);      /* #00000066 (Black 40) */
+  --segment-picker-bg: rgba(255, 255, 255, 0.08); /* #FFFFFF14 (White 14) */
+  --tab-inactive-bg: transparent; 
+  /* The active tab button background (previously #333333, now using white for the text background) */
+  --tab-active-text-bg: #FFFFFF; /* White for the text's containing pill shape */
   /* --- REVERTED: Popup background is DARK --- */
   --popup-bg: #292929; /* Neutral/Neutral750 */
   
   --tab-bar-bg: #404040; 
   
   /* --- REVERTED: Primary text inside popup is WHITE --- */
-  --text-primary: #FFFFFF; 
+  --text-primary: #FFFFFF; /* <--- THIS MUST BE WHITE for the dark theme */
   --text-primary-on-light: #333333; /* For text on the main white background */
   
   /* --- REVERTED: Secondary text inside popup is LIGHT GREY --- */
@@ -50,7 +59,7 @@
   /* --- Typography --- */
   --font-family: 'Nunito Sans', sans-serif; /* Default is Nunito Sans */
   --font-family-body: var(--font-family); 
-  --font-family-header: var(--font-family); /* REVERTED: Header now uses the default font */
+  --font-family-header: 'Kumbh Sans', sans-serif; /* NEW: Kumbh Sans for tab labels */
 
   --font-size-lg: 18px; 
   --font-size-md: 14px; 

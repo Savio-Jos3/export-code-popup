@@ -5,6 +5,8 @@ import PopupHeader from './PopupHeader';
 import TabNavigation from './TabNavigation';
 import TabContent from './TabContent';
 import '../styles/ExportCodePopup.css';
+import '../styles/Frame2Wrapper.css'; // <-- ADD THIS IMPORT
+
 
 // Define tab data for the component
 const TABS = [
@@ -40,15 +42,14 @@ function ExportCodePopup({ isOpen, onClose }) {
     <div className="popup-overlay">
       <div className="export-code-popup-container" ref={popupRef}>
         
-        {/* The PopupHeader now includes the "Code Export" title AND 
-            the "Manage how you download..." description text, as well as the Close Button. */}
         <PopupHeader onClose={onClose} />
         
-        {/* Tab Navigation (SegmentPicker) - Frame 2 starts here */}
-        <TabNavigation tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
-        
-        {/* Tab Content and Download Button */}
-        <TabContent activeTab={activeTab} />
+        {/* --- START OF FRAME 2 WRAPPER --- */}
+        <div className="frame-2-wrapper">
+          <TabNavigation tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
+          <TabContent activeTab={activeTab} />
+        </div>
+        {/* --- END OF FRAME 2 WRAPPER --- */}
         
       </div>
     </div>

@@ -8,7 +8,19 @@
   justify-content: space-between; /* Pushes the download button to the bottom */
   gap: 16px;
 }
+.tab-content-container {
+  /* This is the inner frame that holds title/checkboxes */
+  /* If this should match the Segment Picker background: */
+  background-color: var(--segment-picker-bg); /* #FFFFFF14 */
+  
+  border-radius: var(--border-radius-sm); 
+  padding: 16px; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
 
+/* ... rest of your existing styles ...
 /* --- Content Title and Icon --- */
 .tab-content-title {
   display: flex;
