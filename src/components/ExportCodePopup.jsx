@@ -10,8 +10,9 @@ import '../styles/Frame2Wrapper.css'; // <-- ADD THIS IMPORT
 
 // Define tab data for the component
 const TABS = [
-  { id: 'html_css', label: 'HTML & CSS' },
-  { id: 'next_js', label: 'Next JS' },
+  // Ensure these IDs match the keys in TabContent.jsx
+  { id: 'html_css', label: 'HTML & CSS' }, 
+  { id: 'next_js', label: 'Next JS' },      
 ];
 
 function ExportCodePopup({ isOpen, onClose }) {
