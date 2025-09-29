@@ -7,34 +7,41 @@
   flex-direction: column;
   justify-content: space-between; /* Pushes the download button to the bottom */
   gap: 16px;
+  
+  /* VERTICAL ALIGNMENT FIX: Add padding to the bottom of the container to create separation from the popup's edge */
+  padding-bottom: 20px; 
 }
 .tab-content-container {
-  /* Dimensions based on 'TabContent Prime' */
-  width: 412px;
+  /* --- FIX: Removed fixed width to resolve alignment issues --- */
+  /* width: 412px; */
   height: 128px;
   
   /* Layout and Spacing */
-  padding: 0 8px; /* Applied padding left/right */
+  padding: 0 8px; /* Applied padding left/right (8px indent) */
   gap: 10px; /* Gap between Export Project Frame and Checkbox Frame */
   
+  /* FIX: Add margin to create gap between this container and the Download Button below */
+  margin-bottom: 16px;
+
   background-color: var(--tab-content-inner-bg); /* #1A1A1A (or whatever you defined) */
   border-radius: var(--border-radius-sm); 
   display: flex;
   flex-direction: column;
 }
 
-/* --- Content Title and Icon --- */
 .tab-content-title {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* To push the zipped tag right */
-  
-  /* Dimensions based on 'Export Project Frame' */
-  width: 396px;
+  /* FIX 2: Apply nowrap to prevent text wrapping */
+  white-space: nowrap; 
+  /* FIX: Remove explicit width to allow flexibility and prevent premature text wrapping */
+  /* width: 396px; */
   height: 22px; 
   
-  font-size: var(--font-size-lg); 
-  font-weight: var(--font-weight-semibold); 
+  /* CRITICAL FIX: Updated font styles to match new 14px, 400 specification */
+  font-size: 14px; 
+  font-weight: 400; 
+  line-height: 150%; /* Added line height based on spec */
   color: var(--text-primary); 
   margin: 0; 
   
@@ -47,6 +54,7 @@
   width: 20px; /* Explicit width for the PNG */
   height: 20px; /* Explicit height for the PNG */
   margin-right: 6px; /* Matches the gap: 6px */
+  flex-shrink: 0; /* Ensures the icon doesn't shrink */
 }
 
 /* Zipped Tag (The pill shape) */
@@ -71,7 +79,7 @@
   
   /* Layout */
   margin-left: auto; /* Pushes tag to the right */
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevents the pill from shrinking */
   display: flex; /* To center text inside */
   align-items: center;
   justify-content: center;
@@ -80,7 +88,7 @@
 /* --- Checkbox Group --- */
 .checkbox-group {
   /* Dimensions based on 'Checkbox Frame' */
-  width: 396px;
+  width: 396px; 
   height: 96px; 
   
   display: flex;
@@ -95,7 +103,8 @@
   display: flex;
   /* Gap based on CheckBox1Frame specification */
   gap: 10px;
-  align-items: center;
+  /* FIX 1: Ensure perfect vertical center alignment */
+  align-items: center; 
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -104,43 +113,66 @@
 }
 
 .checkbox-label {
-  /* --- FIX: Applying new Text Typography specifications --- */
-  color: var(--text-secondary); /* Assuming Neutral400 (#AFAFAF) maps to a secondary text color for consistency */
-  font-size: 13px; /* Changed from var(--font-size-md) */
-  font-weight: 400; /* Changed from var(--font-weight-regular) */
+  /* --- FIX: Applying correct Text Typography specifications --- */
+  /* FIX: Set color to the intended #AFAFAF (Neutral400) */
+  color: #AFAFAF; 
+  /* CRITICAL FIX: Set font size to 14px as per latest spec. */
+  font-size: 14px; 
+  font-weight: 400; 
   
-  margin-left: 0; /* Gap is handled by the parent container (.checkbox-container) */
-  line-height: 150%; /* 150% line height */
+  margin-left: 0; 
+  /* FIX 2: Using the specified 150% line height for better spacing */
+  line-height: 150%; 
 }
+
 
 
 /* --- Download Button --- */
 .download-button-wrapper {
   margin-top: auto; /* Ensures the button sticks to the bottom */
+  
+  width: 100%; /* Take up the full width of the parent (the padded tab-content) */
+  display: flex;
+  justify-content: center; /* Center aligned */
+  gap: 6px; /* Frame 1 gap */
+  
+  /* CRITICAL ALIGNMENT FIX: Re-adding 8px horizontal padding to match .tab-content-container's inner alignment */
+  padding: 0 8px;
 }
 
 .download-button {
-  width: 100%; 
-  padding: 12px 24px;
+  /* --- Centre aligned Download frame styles --- */
+  /* FIX: Remove fixed width to allow button to expand to fit text */
+  /* width: 183px; */
+  min-width: 130px;
+  height: 32px; 
   
-  /* Uses the dark gradient/colors from the main export button */
-  background: linear-gradient(
-    180deg, 
-    var(--export-button-bg-top) 0%, 
-    var(--export-button-bg-bottom) 100%
-  );
-  border: 1px solid var(--export-button-border); 
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--export-button-shadow); 
+  /* Padding based on specifications */
+  padding: 8px 16px;
+  
+  /* Appearance */
+  background: linear-gradient(180deg, #444444 0%, #333333 100%);
+  border: none;
+  border-radius: 4px; 
+  box-shadow: 0px 1px 1px 0px var(--Black30); 
+  
+  /* Separate border for the top edge */
+  border-top: 1px solid #FFFFFF1A; 
 
-  color: var(--text-primary); /* WHITE text */
-  font-size: var(--font-size-md); 
-  font-weight: var(--font-weight-medium); 
-  text-transform: uppercase; 
+  /* Text Typography */
+  color: #F6F6F6; 
+  font-family: 'Nunito Sans', sans-serif; 
+  font-size: 12px; 
+  font-weight: 600; 
+  line-height: 100%; 
+  letter-spacing: 0.03em; 
+  text-align: center;
+  
+  /* CRITICAL: Ensure text does not wrap */
+  white-space: nowrap;
+
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-.download-button:hover {
-  background: var(--export-button-bg-bottom); 
-  border-color: rgba(255, 255, 255, 0.2);
-}
+

@@ -1,20 +1,16 @@
-/* src/styles/TabNavigation.css */
-
 /* src/styles/TabNavigation.css - FINAL SEGMENT PICKER COLOR LOGIC */
 
 /* --- 1. Tab Navigation Container (The Outer Frame) --- */
-/* src/styles/TabNavigation.css - FORCED FINAL STATE FIX */
-
 .tab-navigation {
   display: flex;
   
-  /* Dimensions/Spacing (RETAINED) */
+  /* Dimensions/Spacing (RETAINED from your specs: 412x42) */
   width: 412px;
   height: 42px;
   padding: 2px;
   
-  /* Background remains the subtle transparent dark */
-  background-color: rgba(255, 255, 255, 0.08); /* #FFFFFF14 */
+  /* Background based on your specs: #FFFFFF14 */
+  background-color: #FFFFFF14;
   border-radius: 8.91px;
   margin: 0; 
 }
@@ -22,34 +18,39 @@
 /* --- 2. Individual Tab Button (Pill - Both States) --- */
 .tab-button {
   flex: 1; 
-  /* Dimensions (RETAINED) */
+  /* Dimensions (RETAINED from your specs: 204x38) */
   width: 204px;
   height: 38px;
+  /* Padding based on your specs: 10px top/bottom, 16px left/right */
   padding: 10px 16px; 
   gap: 10px; 
   
-  /* --- CRITICAL: Default (Inactive) Background is TRANSPARENT ---
-     This allows the parent's #FFFFFF14 color to show through (the unselected state). */
+  /* --- CRITICAL: Default (Inactive) Background is TRANSPARENT --- */
   background-color: transparent; 
   border: none; 
-  border-radius: 48px; 
+  
+  /* CRITICAL FIX: Updated border-radius to a softer curve (10px) to match the parent's aesthetic (8.91px) */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   
   display: flex; 
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out; 
+  cursor: pointer;
 
-  /* --- TEXT STYLING APPLIED DIRECTLY TO BUTTON (RETAINED) --- */
-  font-family: var(--font-family-header); /* Kumbh Sans */
-  font-size: var(--font-size-md); 
-  font-weight: 500; 
-  line-height: 20px; 
-  letter-spacing: -0.08px;
-  text-align: center;
-  
-  /* --- CRITICAL: Text Color is ALWAYS WHITE (#FFFFFF) --- */
-  color: #FFFFFF; 
+  /* --- CRITICAL FIX: REMOVE HOVER EFFECT --- */
+  /* Ensures no hover styling is applied */
 }
+
+/* Ensure no visual change on hover */
+.tab-button:hover {
+  background-color: transparent; /* Keep unselected tab transparent on hover */
+  box-shadow: none;
+}
+
 
 /* --- 3. Active Tab Styles (Selected Pill) --- */
 .tab-button.active {
@@ -57,11 +58,22 @@
   background-color: #000000; 
   border: none; 
   box-shadow: none; 
-  border-radius: 48px; 
+  /* Using 10px to match the inactive state and the parent container's curve */
+  border-radius: 10px; 
 }
 
-/* --- 4. Hover State for Inactive Tabs --- */
-.tab-button:not(.active):hover {
-  /* Subtle dark color on hover over the #FFFFFF14 background */
-  background-color: rgba(0, 0, 0, 0.15); 
+/* --- 4. Typography Updates (Based on 'Label' specs) --- */
+.tab-button {
+  /* Font Family: Kumbh Sans (Assumed var) */
+  font-family: var(--font-family-header); 
+  /* CRITICAL FIX: Updated font size to 14px */
+  font-size: 14px; 
+  font-weight: 500; 
+  /* Line height and letter spacing from specs */
+  line-height: 20px; 
+  letter-spacing: -0.08px;
+  text-align: center;
+  
+  /* Text Color is #FFFFFF (white) */
+  color: #FFFFFF; 
 }

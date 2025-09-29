@@ -25,11 +25,15 @@
   /* Layout and Dimensions (Based on Figma: width: 460, height: 367) */
   width: 460px; 
   min-width: 460px; 
+  /* The height will be controlled dynamically via React/JS based on the tab */
   height: 367px; 
   
+  /* CRITICAL: Add transition for smooth height change (from original Canvas) */
+  transition: height 0.3s ease-in-out, min-height 0.3s ease-in-out;
+  
   /* Appearance */
-background-color: var(--popup-bg); /* This will now be #FFFFFF (white) */
-  /* ... shadows ... */  border-radius: var(--border-radius-md); /* 8px */
+  background-color: var(--popup-bg); /* This will now be #FFFFFF (white) */
+  border-radius: var(--border-radius-md); /* 8px */
   overflow: hidden; 
   
   /* Shadows (Two shadows combined) */
