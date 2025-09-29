@@ -1,0 +1,102 @@
+/* src/styles/TabContent.css - FINAL ROLLED-BACK DARK THEME */
+
+.tab-content {
+  /* Takes up remaining space in the container */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes the download button to the bottom */
+  gap: 16px;
+}
+
+/* --- Content Title and Icon --- */
+.tab-content-title {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-lg); /* 18px */
+  font-weight: var(--font-weight-semibold); 
+  color: var(--text-primary); /* WHITE text (Dark Theme) */
+  margin-bottom: 12px; 
+}
+
+.tab-content-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  /* Icons are now WHITE to contrast with the dark popup background */
+  fill: var(--text-primary); 
+  stroke: var(--text-primary); 
+}
+
+
+/* --- Zipped Tag (Retains dark text on yellow background) --- */
+.zipped-tag {
+  background-color: var(--zipped-tag-bg); /* Yellow background */
+  color: var(--zipped-tag-text); /* Dark text */
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-left: auto; /* Pushes tag to the right */
+  flex-shrink: 0;
+  margin-left: 10px; 
+}
+
+
+/* --- Checkbox Group --- */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-label {
+  color: var(--text-primary); /* WHITE text (Dark Theme) */
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  margin-left: 8px;
+}
+
+
+/* --- Download Button --- */
+.download-button-wrapper {
+  margin-top: auto; /* Ensures the button sticks to the bottom */
+}
+
+.download-button {
+  width: 100%; 
+  padding: 12px 24px;
+  
+  /* Uses the dark gradient/colors from the main export button */
+  background: linear-gradient(
+    180deg, 
+    var(--export-button-bg-top) 0%, 
+    var(--export-button-bg-bottom) 100%
+  );
+  border: 1px solid var(--export-button-border); 
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--export-button-shadow); 
+
+  color: var(--text-primary); /* WHITE text */
+  font-size: var(--font-size-md); 
+  font-weight: var(--font-weight-medium); 
+  text-transform: uppercase; 
+  transition: all 0.2s ease-in-out;
+}
+
+.download-button:hover {
+  background: var(--export-button-bg-bottom); 
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* NOTE: Custom checkbox styles (the boxes/checkmarks) are defined in Checkbox.css. */

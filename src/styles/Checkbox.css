@@ -1,0 +1,50 @@
+/* src/styles/Checkbox.css */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none; /* Prevent text selection */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 12px; /* Space between checkboxes */
+}
+
+.hidden-checkbox {
+  position: absolute; /* Hide the native checkbox */
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--text-secondary); /* Light grey border for unchecked state */
+  border-radius: var(--border-radius-sm); /* 4px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px; /* Space between checkbox and label */
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-checkbox.checked {
+  background-color: var(--accent-green); /* Green background when checked */
+  border-color: var(--accent-green); /* Green border when checked */
+}
+
+.checkmark-icon {
+  width: 12px; /* Size of the checkmark SVG */
+  height: 12px;
+  stroke: var(--text-primary); /* White checkmark */
+}
+
+.checkbox-label {
+  font-size: var(--font-size-md); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--text-primary); /* White text */
+}

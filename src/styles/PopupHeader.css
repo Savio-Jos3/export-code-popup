@@ -1,0 +1,72 @@
+/* src/styles/PopupHeader.css - FINALIZED HEADER/DESCRIPTION LAYOUT */
+
+.popup-header-row {
+  display: flex;
+  justify-content: space-between; /* Pushes the title/description block and the close button apart */
+  align-items: flex-start; /* Aligns items to the top of the header row */
+  width: 100%; /* Takes full width of parent (460px - 16px padding on each side = 428px) */
+  /* This component is now responsible for the top padding and gap previously in the container */
+  /* It seems the 16px top padding and 16px gap on the container is still needed, 
+     so we focus on the inner structure here. */
+}
+
+.popup-title-description-container {
+  /* Dimensions based on the 390x53 frame, padding 4px top/left, gap 6px */
+  display: flex;
+  flex-direction: column;
+  
+  /* Apply padding/gap from the specification */
+  padding-top: 4px;
+  padding-left: 4px;
+  gap: 6px; /* Space between the title and description */
+
+  width: 390px; /* <--- Specific width */
+  height: 53px; /* <--- Specific height */
+  flex-shrink: 0; /* Ensures it maintains its fixed width */
+}
+
+/* --- Title Styles (Code Export) --- */
+.popup-title {
+  font-family: var(--font-family-header); /* NOW POINTS TO NUNITO SANS */
+  font-size: var(--font-size-lg); 
+  font-weight: var(--font-weight-semibold); 
+  color: var(--text-primary); /* REVERTED: WHITE text */
+  margin: 0; 
+}
+
+/* --- Description Styles (How to manage...) --- */
+.popup-description {
+  font-family: var(--font-family-header); /* NOW POINTS TO NUNITO SANS */
+  width: 100%; 
+  height: 21px; 
+  font-size: var(--font-size-md); 
+  font-weight: var(--font-weight-regular); 
+  color: var(--text-secondary); /* REVERTED: LIGHT GREY text */
+  margin: 0; 
+  line-height: 21px; 
+}
+
+
+/* --- Close Button Styles --- */
+.close-button {
+  /* Dimensions: 22x22 */
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px; 
+  padding: 0; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary); /* REVERTED: LIGHT GREY 'X' icon */
+  transition: color 0.2s ease-in-out;
+}
+
+.close-button:hover {
+  color: var(--text-primary); /* REVERTED: WHITE on hover */
+}
+
+.close-button svg {
+  width: 100%; /* SVG fills the 22px button */
+  height: 100%;
+}

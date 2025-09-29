@@ -1,0 +1,39 @@
+/* src/styles/ExportButton.css - CONFIRMED */
+
+.export-trigger-button {
+  /* Dimensions and Spacing */
+  width: 130px;
+  height: 32px;
+  min-width: 130px;
+  padding: 8px 16px; /* 8px top/bottom, 16px left/right */
+  margin-top: 20px; /* To separate it from the H1 (if any) above it */
+  
+  /* Background and Appearance */
+  background: linear-gradient(
+    180deg, 
+    var(--export-button-bg-top) 0%, 
+    var(--export-button-bg-bottom) 100%
+  );
+  color: var(--text-primary); /* White text from global vars */
+  font-size: 13px; /* Optimized to fit 130px width */
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase; /* ALL CAPS text */
+  
+  /* Borders and Effects */
+  border: 1px solid var(--export-button-border); /* Subtle white border #FFFFFF1A */
+  border-radius: var(--border-radius-sm); /* 4px */
+  box-shadow: var(--export-button-shadow); /* 0px 1px 1px 0px Black30 */
+  
+  /* Interaction */
+  cursor: pointer;
+  display: flex; /* Use flex to ensure content is centered if needed */
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover state */
+.export-trigger-button:hover {
+  background: var(--export-button-bg-bottom); /* Makes it a solid color on hover for slight darken effect */
+  border-color: rgba(255, 255, 255, 0.2); /* Border slightly more visible on hover */
+}

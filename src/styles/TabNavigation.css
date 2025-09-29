@@ -1,0 +1,35 @@
+/* src/styles/TabNavigation.css */
+
+.tab-navigation {
+  display: flex;
+  padding: 4px; 
+  background-color: var(--tab-bar-bg); /* #404040 (dark) */
+  border-radius: var(--border-radius-sm); 
+  margin: 0 24px 24px 24px; 
+}
+
+.tab-button {
+  flex: 1; 
+  padding: 10px 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-inactive-tab-color); /* Light grey text */
+  border: 1px solid var(--border-subtle); /* Dark border */
+  background-color: transparent; /* <--- CHANGE: Inactive tabs are now transparent within the dark tab bar */
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease-in-out; 
+}
+
+/* Active Tab Styles */
+.tab-button.active {
+  background-color: var(--export-button-bg-top); /* Dark background for active tab #444444 */
+  color: var(--text-primary); /* White text */
+  border: 1px solid var(--export-button-border); /* Subtle white border for active tab */
+  box-shadow: none; 
+}
+
+/* Hover State for Inactive Tabs */
+.tab-button:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.1); /* <--- CHANGE: Light hover effect on the dark tab bar */
+  color: var(--text-primary); /* White text on hover */
+}
