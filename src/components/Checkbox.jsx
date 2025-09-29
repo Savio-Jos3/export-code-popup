@@ -1,7 +1,8 @@
-// src/components/Checkbox.jsx
+// src/components/Checkbox.jsx - FINAL VERSION USING PNG TICK
 
 import React from 'react';
 import '../styles/Checkbox.css';
+import CheckmarkTick from '../assets/tick.png'; // <-- IMPORT IS CORRECT
 
 function Checkbox({ label, checked, onChange, name }) {
   return (
@@ -16,14 +17,12 @@ function Checkbox({ label, checked, onChange, name }) {
       
       {/* The visible custom box */}
       <div className="custom-checkbox">
-        {/* The Checkmark SVG (visible when 'checked') */}
-        <svg 
+        {/* --- CRITICAL FIX: Replaced <svg> with <img> for PNG Tick --- */}
+        <img 
+          src={CheckmarkTick} 
+          alt="Checkmark" 
           className="checkmark-icon" 
-          viewBox="0 0 24 24"
-        >
-          {/* Path for the checkmark (simple checkmark SVG path) */}
-          <path fill="currentColor" d="M9.64 18.06l-4.24-4.24 1.41-1.41 2.83 2.83 6.36-6.36 1.41 1.41-7.77 7.78z"/>
-        </svg>
+        />
       </div>
       
       {/* The label text */}

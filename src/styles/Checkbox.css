@@ -1,6 +1,18 @@
-/* src/styles/Checkbox.css */
+/* src/styles/Checkbox.css - FINAL CHECKBOX IMPLEMENTATION (PNG Tick) */
 
-/* Hide the native checkbox input */
+/* --- CHECKBOX CONTAINER (Checkbox 1 Frame) --- */
+.checkbox-container {
+  /* Dimensions based on 'Checkbox 1' frame */
+  width: 396px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Gap between Checkbox (box) and Label */
+  /* Ensures the label is a clickable area */
+  cursor: pointer; 
+}
+
+/* --- HIDE NATIVE CHECKBOX --- */
 .hidden-checkbox {
   position: absolute;
   opacity: 0;
@@ -8,59 +20,97 @@
   height: 0;
 }
 
-/* The visible box element */
+/* --- CUSTOM CHECKBOX (Vector 3 / Outer Box) --- */
 .custom-checkbox {
-  width: 16px;
-  min-width: 16px; /* Prevents shrinking */
-  height: 16px;
-  min-height: 16px; /* Prevents shrinking */
+  /* Dimensions based on 'Vector 3' / Checkbox frame */
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
   
-  /* Appearance: Square box with rounded corners */
+  /* Layout and Styling */
   background-color: transparent; 
-  border: 1px solid var(--text-primary); /* White border on dark theme */
-  border-radius: var(--border-radius-sm); /* 4px */
+  border: none; /* No border on the outermost box (Vector 3) */
+  border-radius: var(--border-radius-sm); 
   
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Crucial for positioning inner layers (pseudo-elements) */
   overflow: hidden; 
   transition: all 0.2s ease-in-out;
 }
 
-/* Appearance when CHECKED */
-.hidden-checkbox:checked + .custom-checkbox {
-  background-color: var(--checkbox-checked-color); /* Magenta/Purple BG for checked state */
-  border-color: var(--checkbox-checked-color); /* Solid border to match BG */
+/* --- 1. VECTOR 2 (UNCHECKED BORDER) --- */
+/* ::before is used to draw the 1.25px border when unchecked */
+.custom-checkbox::before {
+  content: '';
+  position: absolute;
+  /* Dimensions of Vector 2: 18.66px */
+  width: 18.67px;
+  height: 18.67px;
+  
+  /* CRITICAL: The border color for the unchecked state is Primary500 */
+  border: 1.25px solid var(--checkbox-border-color); /* #665DC0 */
+  border-radius: 4px; 
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Checkmark Icon Styling */
-.checkmark-icon {
-  width: 100%;
-  height: 100%;
-  color: #FFFFFF; /* White checkmark */
+/* --- 2. VECTOR 1 (CHECKED FILL) --- */
+/* ::after is used to draw the inner colored fill when checked */
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  /* Dimensions of Vector 1: 16.79px */
+  width: 16.8px;
+  height: 16.8px;
+  background-color: var(--checkbox-checked-color); /* #665DC0 */
+  border-radius: 3px; 
+  z-index: 1; /* Place fill under the checkmark */
   
-  /* Initially hidden */
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.2s ease-in-out;
+  opacity: 0; /* Hidden when unchecked */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* --- CHECKED STATE LOGIC --- */
+
+/* When checked, hide the Vector 2 border and show the Vector 1 fill */
+.hidden-checkbox:checked + .custom-checkbox::before {
+  border-color: transparent; /* Hides the border */
+}
+
+.hidden-checkbox:checked + .custom-checkbox::after {
+  opacity: 1; /* Shows the inner fill (Vector 1) */
+}
+
+/* --- TICK (PNG Checkmark Icon) --- */
+.checkmark-icon {
+  /* Dimensions of Tick */
+  width: 13.13px; 
+  height: 8.97px; 
+  z-index: 2; /* Ensure tick is always on top */
+  
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* Checkmark visibility when CHECKED */
 .hidden-checkbox:checked + .custom-checkbox .checkmark-icon {
   opacity: 1;
-  transform: scale(1);
 }
 
-/* Hover effect on the container (when unchecked) */
-.checkbox-container:hover .custom-checkbox:not(:has(.hidden-checkbox:checked)) {
-  border-color: var(--checkbox-checked-color); /* Hover outline changes to magenta/purple */
+/* --- HOVER EFFECT --- */
+/* Subtle hover effect on the entire box area */
+.checkbox-container:hover .custom-checkbox {
+  background-color: rgba(255, 255, 255, 0.05); 
 }
 
-/* Checkbox label styling (already defined in TabContent.css, but added here for completeness) */
+/* --- LABEL STYLING --- */
 .checkbox-label {
   color: var(--text-primary); 
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
-  margin-left: 8px;
-  line-height: 16px; /* Aligns vertically with the box */
+  /* Text aligns vertically with the 28px height of the box */
+  line-height: 28px; 
 }

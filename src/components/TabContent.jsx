@@ -1,8 +1,13 @@
-// src/components/TabContent.jsx - UPDATED TO USE CHECKBOX COMPONENT
+// src/components/TabContent.jsx - FINAL VERSION WITH PNG ICONS
 
 import React from 'react';
-import Checkbox from './Checkbox'; // <--- IMPORT THE NEW COMPONENT
+import Checkbox from './Checkbox'; 
 import '../styles/TabContent.css';
+
+// Importing the PNG assets for the project icons
+import HtmlCssIcon from '../assets/react.png'; 
+import NextJsIcon from '../assets/NextJS.png';   
+
 
 const TabContent = ({ activeTab }) => {
   // Mock state for checkboxes (replace with actual state management later)
@@ -27,10 +32,10 @@ const TabContent = ({ activeTab }) => {
       <>
         {/* --- INNER BLACK FRAME (.tab-content-container) --- */}
         <div className="tab-content-container">
-          {/* Title/Zipped Tag (RETAINED) */}
+          {/* Title/Zipped Tag */}
           <h3 className="tab-content-title">
-            {/* SVG placeholder for icon */}
-            <svg className="tab-content-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M2.5 4v16h19V4h-19zm17 2v12h-15V6h15z"/></svg> 
+            {/* --- FIX: Replaced SVG with <img> for HTML/CSS Icon --- */}
+            <img src={HtmlCssIcon} alt="HTML/CSS Icon" className="tab-content-icon" />
             Export as HTML & CSS Project
             <span className="zipped-tag">Zipped</span>
           </h3>
@@ -60,10 +65,10 @@ const TabContent = ({ activeTab }) => {
       <>
         {/* --- INNER BLACK FRAME (.tab-content-container) --- */}
         <div className="tab-content-container">
-          {/* Title/Zipped Tag (RETAINED) */}
+          {/* Title/Zipped Tag */}
           <h3 className="tab-content-title">
-            {/* SVG placeholder for icon */}
-            <svg className="tab-content-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg> 
+            {/* --- FIX: Replaced SVG with <img> for Next JS Icon --- */}
+            <img src={NextJsIcon} alt="Next JS Icon" className="tab-content-icon" />
             Export as Next JS Project
             <span className="zipped-tag">Zipped</span>
           </h3>

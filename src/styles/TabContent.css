@@ -9,59 +9,84 @@
   gap: 16px;
 }
 .tab-content-container {
-  /* This is the inner frame that holds title/checkboxes */
-  /* If this should match the Segment Picker background: */
-  background-color: var(--segment-picker-bg); /* #FFFFFF14 */
+  /* Dimensions based on 'TabContent Prime' */
+  width: 412px;
+  height: 128px;
   
+  /* Layout and Spacing */
+  padding: 0 8px; /* Applied padding left/right */
+  gap: 10px; /* Gap between Export Project Frame and Checkbox Frame */
+  
+  background-color: var(--tab-content-inner-bg); /* #1A1A1A (or whatever you defined) */
   border-radius: var(--border-radius-sm); 
-  padding: 16px; 
   display: flex;
   flex-direction: column;
-  gap: 16px; 
 }
 
-/* ... rest of your existing styles ...
 /* --- Content Title and Icon --- */
 .tab-content-title {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-lg); /* 18px */
+  justify-content: space-between; /* To push the zipped tag right */
+  
+  /* Dimensions based on 'Export Project Frame' */
+  width: 396px;
+  height: 22px; 
+  
+  font-size: var(--font-size-lg); 
   font-weight: var(--font-weight-semibold); 
-  color: var(--text-primary); /* WHITE text (Dark Theme) */
-  margin-bottom: 12px; 
+  color: var(--text-primary); 
+  margin: 0; 
+  
+  /* Inner Gap for 'Export Project' sub-frame */
+  gap: 6px; 
 }
 
+/* Icon (HTML/brand react native) */
 .tab-content-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  /* Icons are now WHITE to contrast with the dark popup background */
-  fill: var(--text-primary); 
-  stroke: var(--text-primary); 
+  width: 20px; /* Explicit width for the PNG */
+  height: 20px; /* Explicit height for the PNG */
+  margin-right: 6px; /* Matches the gap: 6px */
 }
 
-
-/* --- Zipped Tag (Retains dark text on yellow background) --- */
+/* Zipped Tag (The pill shape) */
 .zipped-tag {
-  background-color: var(--zipped-tag-bg); /* Yellow background */
-  color: var(--zipped-tag-text); /* Dark text */
-  padding: 4px 8px;
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  /* Dimensions based on 'Zipped' frame */
+  width: 62px;
+  height: 22px;
+  border-radius: 100px; /* Highly rounded pill shape */
+  
+  /* Padding based on specifications */
+  padding: 2px 11px;
+  
+  /* Appearance */
+  /* FIX: Using explicit color for immediate visibility since the CSS variable might be missing */
+  background-color: #FFFFFF1A; 
+  color: var(--text-primary); /* White Text */
+
+  /* Text specifications (Kumbh Sans, 12px, 400, 150% line height) */
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%; /* 18px line height */
+  
+  /* Layout */
   margin-left: auto; /* Pushes tag to the right */
   flex-shrink: 0;
-  margin-left: 10px; 
+  display: flex; /* To center text inside */
+  align-items: center;
+  justify-content: center;
 }
-
 
 /* --- Checkbox Group --- */
 .checkbox-group {
+  /* Dimensions based on 'Checkbox Frame' */
+  width: 396px;
+  height: 96px; 
+  
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px; /* Specific gap between each checkbox item */
 }
-
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -76,7 +101,8 @@
   color: var(--text-primary); /* WHITE text (Dark Theme) */
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
-  margin-left: 8px;
+  margin-left: 0; /* Gap is handled by the parent container */
+  line-height: 28px; /* Aligns vertically with the box */
 }
 
 
@@ -110,5 +136,3 @@
   background: var(--export-button-bg-bottom); 
   border-color: rgba(255, 255, 255, 0.2);
 }
-
-/* NOTE: Custom checkbox styles (the boxes/checkmarks) are defined in Checkbox.css. */
