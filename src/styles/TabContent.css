@@ -85,10 +85,16 @@
   
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Specific gap between each checkbox item */
+  /* Gap based on specifications */
+  gap: 6px; 
 }
 .checkbox-container {
+  /* Height based on CheckBox1Frame specification */
+  height: 28px;
+  
   display: flex;
+  /* Gap based on CheckBox1Frame specification */
+  gap: 10px;
   align-items: center;
   cursor: pointer;
   -webkit-user-select: none;
@@ -98,11 +104,13 @@
 }
 
 .checkbox-label {
-  color: var(--text-primary); /* WHITE text (Dark Theme) */
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
-  margin-left: 0; /* Gap is handled by the parent container */
-  line-height: 28px; /* Aligns vertically with the box */
+  /* --- FIX: Applying new Text Typography specifications --- */
+  color: var(--text-secondary); /* Assuming Neutral400 (#AFAFAF) maps to a secondary text color for consistency */
+  font-size: 13px; /* Changed from var(--font-size-md) */
+  font-weight: 400; /* Changed from var(--font-weight-regular) */
+  
+  margin-left: 0; /* Gap is handled by the parent container (.checkbox-container) */
+  line-height: 150%; /* 150% line height */
 }
 
 

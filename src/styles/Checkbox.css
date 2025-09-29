@@ -2,13 +2,11 @@
 
 /* --- CHECKBOX CONTAINER (Checkbox 1 Frame) --- */
 .checkbox-container {
-  /* Dimensions based on 'Checkbox 1' frame */
-  width: 396px;
+  /* Height based on CheckBox1Frame specification (396px width is handled by TabContent.css) */
   height: 28px;
   display: flex;
   align-items: center;
   gap: 10px; /* Gap between Checkbox (box) and Label */
-  /* Ensures the label is a clickable area */
   cursor: pointer; 
 }
 
@@ -20,52 +18,54 @@
   height: 0;
 }
 
-/* --- CUSTOM CHECKBOX (Vector 3 / Outer Box) --- */
+/* --- CUSTOM CHECKBOX (Vector 3 / Outer Box - 28x28) --- */
 .custom-checkbox {
-  /* Dimensions based on 'Vector 3' / Checkbox frame */
+  /* Dimensions based on 'Checkbox' specification */
   width: 28px;
   min-width: 28px;
   height: 28px;
   min-height: 28px;
   
-  /* Layout and Styling */
+  /* Layout */
   background-color: transparent; 
-  border: none; /* No border on the outermost box (Vector 3) */
+  border: none; 
   border-radius: var(--border-radius-sm); 
   
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Crucial for positioning inner layers (pseudo-elements) */
+  position: relative; /* Crucial for positioning inner layers */
   overflow: hidden; 
   transition: all 0.2s ease-in-out;
 }
 
-/* --- 1. VECTOR 2 (UNCHECKED BORDER) --- */
-/* ::before is used to draw the 1.25px border when unchecked */
+/* --- 1. VECTOR 2 (UNCHECKED BORDER - 18.67x18.67) --- */
+/* ::before is the border that is visible when UNCHECKED */
 .custom-checkbox::before {
   content: '';
   position: absolute;
-  /* Dimensions of Vector 2: 18.66px */
+  /* Dimensions of Vector 2: 18.666667938232422px */
   width: 18.67px;
   height: 18.67px;
   
-  /* CRITICAL: The border color for the unchecked state is Primary500 */
-  border: 1.25px solid var(--checkbox-border-color); /* #665DC0 */
+  /* CRITICAL COLOR FIX: Border is 1.25px thick, using the specified #665DC0 */
+  border: 1.25px solid #665DC0; 
   border-radius: 4px; 
   background-color: transparent;
   transition: all 0.2s ease-in-out;
 }
 
-/* --- 2. VECTOR 1 (CHECKED FILL) --- */
-/* ::after is used to draw the inner colored fill when checked */
+/* --- 2. VECTOR 1 (CHECKED FILL - 16.8x16.8) --- */
+/* ::after is the solid color fill that appears when CHECKED */
 .custom-checkbox::after {
   content: '';
   position: absolute;
-  /* Dimensions of Vector 1: 16.79px */
+  /* Dimensions of Vector 1: 16.799999237060547px */
   width: 16.8px;
   height: 16.8px;
-  background-color: var(--checkbox-checked-color); /* #665DC0 */
+  
+  /* CRITICAL COLOR FIX: Background fill is the specified #665DC0 */
+  background-color: #665DC0; 
   border-radius: 3px; 
   z-index: 1; /* Place fill under the checkmark */
   
@@ -73,7 +73,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-/* --- CHECKED STATE LOGIC --- */
+/* --- CHECKED STATE LOGIC (Applies #665DC0) --- */
 
 /* When checked, hide the Vector 2 border and show the Vector 1 fill */
 .hidden-checkbox:checked + .custom-checkbox::before {
@@ -89,9 +89,16 @@
   /* Dimensions of Tick */
   width: 13.13px; 
   height: 8.97px; 
-  z-index: 2; /* Ensure tick is always on top */
+  /* Tick color is handled by the PNG itself, but we ensure it's on top */
+  z-index: 2; 
   
   opacity: 0; /* Initially hidden */
+  /* Positioning based on offsets (top: 10.06px; left: 7.43px;) 
+     We use absolute positioning within the custom-checkbox for precision */
+  position: absolute;
+  top: 10.06px;
+  left: 7.43px;
+
   transition: opacity 0.2s ease-in-out;
 }
 
@@ -104,13 +111,4 @@
 /* Subtle hover effect on the entire box area */
 .checkbox-container:hover .custom-checkbox {
   background-color: rgba(255, 255, 255, 0.05); 
-}
-
-/* --- LABEL STYLING --- */
-.checkbox-label {
-  color: var(--text-primary); 
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
-  /* Text aligns vertically with the 28px height of the box */
-  line-height: 28px; 
 }

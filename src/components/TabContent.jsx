@@ -5,8 +5,8 @@ import Checkbox from './Checkbox';
 import '../styles/TabContent.css';
 
 // Importing the PNG assets for the project icons
-import HtmlCssIcon from '../assets/react.png'; 
-import NextJsIcon from '../assets/NextJS.png';   
+import HtmlCssIcon from '../assets/NextJS.png'; 
+import NextJsIcon from '../assets/react.png';   
 
 
 const TabContent = ({ activeTab }) => {
